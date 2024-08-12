@@ -15,7 +15,11 @@ public enum Permissions  {
     MANAGER_READ("MANAGER::read"),
     MANAGER_UPDATE("MANAGER::update"),
     MANAGER_CREATE("MANAGER::create"),
-    MANAGER_DELETE("MANAGER::delete")
+    MANAGER_DELETE("MANAGER::delete"),
+    CUSTOMER_READ("CUSTOMER::read"),
+    CUSTOMER_UPDATE("CUSTOMER::update"),
+    CUSTOMER_CREATE("CUSTOMER::create"),
+    CUSTOMER_DELETE("CUSTOMER::delete")
     ;
 
     @Getter

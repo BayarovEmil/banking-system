@@ -13,6 +13,22 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public enum Role {
     USER(Collections.emptySet()),
+    CUSTOMER(
+            Set.of(
+                    Permissions.CUSTOMER_CREATE,
+                    Permissions.CUSTOMER_READ,
+                    Permissions.CUSTOMER_UPDATE,
+                    Permissions.CUSTOMER_DELETE
+            )
+    ),
+    MANAGER(
+            Set.of(
+                    Permissions.MANAGER_CREATE,
+                    Permissions.MANAGER_READ,
+                    Permissions.MANAGER_UPDATE,
+                    Permissions.MANAGER_DELETE
+            )
+    ),
     ADMIN(
             Set.of(
                 Permissions.ADMIN_READ,
@@ -23,14 +39,6 @@ public enum Role {
                 Permissions.MANAGER_READ,
                 Permissions.MANAGER_UPDATE,
                 Permissions.MANAGER_DELETE
-            )
-    ),
-    MANAGER(
-            Set.of(
-                    Permissions.MANAGER_CREATE,
-                    Permissions.MANAGER_READ,
-                    Permissions.MANAGER_UPDATE,
-                    Permissions.MANAGER_DELETE
             )
     )
     ;

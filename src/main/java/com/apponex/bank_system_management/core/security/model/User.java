@@ -2,9 +2,11 @@ package com.apponex.bank_system_management.core.security.model;
 
 import com.apponex.bank_system_management.core.security.model.role.Role;
 import com.apponex.bank_system_management.core.security.model.token.Token;
+import com.apponex.bank_system_management.entity.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -21,8 +23,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "_user")
 @EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal {
@@ -48,6 +51,9 @@ public class User implements UserDetails, Principal {
     private List<Token> tokens;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(mappedBy = "user",fetch = FetchType.EAGER)
+    private Customer customer;
 
     @CreatedDate
     @Column(nullable = false,updatable = false)

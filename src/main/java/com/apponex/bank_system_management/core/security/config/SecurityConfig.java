@@ -35,17 +35,23 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req->
                                 req.requestMatchers(permitSwagger).permitAll()
-                                        .requestMatchers("/manager/**").hasAnyRole(Role.ADMIN.name(), Role.MANAGER.name())
-                                        .requestMatchers(HttpMethod.GET,"/manager/**").hasAnyAuthority(Permissions.ADMIN_READ.name(), Permissions.MANAGER_READ.name())
-                                        .requestMatchers(HttpMethod.POST,"/manager/**").hasAnyAuthority(Permissions.ADMIN_CREATE.name(), Permissions.MANAGER_CREATE.name())
-                                        .requestMatchers(HttpMethod.PUT,"/manager/**").hasAnyAuthority(Permissions.ADMIN_UPDATE.name(), Permissions.MANAGER_UPDATE.name())
-                                        .requestMatchers(HttpMethod.DELETE,"/manager/**").hasAnyAuthority(Permissions.ADMIN_DELETE.name(), Permissions.MANAGER_DELETE.name())
-
                                         .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
                                         .requestMatchers(HttpMethod.GET,"/admin/**").hasAuthority(Permissions.ADMIN_READ.name())
                                         .requestMatchers(HttpMethod.POST,"/admin/**").hasAuthority(Permissions.ADMIN_CREATE.name())
                                         .requestMatchers(HttpMethod.PUT,"/admin/**").hasAuthority(Permissions.ADMIN_UPDATE.name())
                                         .requestMatchers(HttpMethod.DELETE,"/admin/**").hasAuthority(Permissions.ADMIN_DELETE.name())
+
+                                        .requestMatchers( "/customer/**").hasRole(Role.CUSTOMER.name())
+                                        .requestMatchers(HttpMethod.GET,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_READ.name())
+                                        .requestMatchers(HttpMethod.POST,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_CREATE.name())
+                                        .requestMatchers(HttpMethod.PUT,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_UPDATE.name())
+                                        .requestMatchers(HttpMethod.DELETE,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_DELETE.name())
+
+                                        .requestMatchers("/manager/**").hasAnyRole(Role.ADMIN.name(), Role.MANAGER.name())
+                                        .requestMatchers(HttpMethod.GET,"/manager/**").hasAnyAuthority(Permissions.ADMIN_READ.name(), Permissions.MANAGER_READ.name())
+                                        .requestMatchers(HttpMethod.POST,"/manager/**").hasAnyAuthority(Permissions.ADMIN_CREATE.name(), Permissions.MANAGER_CREATE.name())
+                                        .requestMatchers(HttpMethod.PUT,"/manager/**").hasAnyAuthority(Permissions.ADMIN_UPDATE.name(), Permissions.MANAGER_UPDATE.name())
+                                        .requestMatchers(HttpMethod.DELETE,"/manager/**").hasAnyAuthority(Permissions.ADMIN_DELETE.name(), Permissions.MANAGER_DELETE.name())
                 )
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
@@ -63,6 +69,7 @@ public class SecurityConfig {
     public static String[] permitSwagger = {
             "/user/**",
             "/auth/**",
+            "/customer/create/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
