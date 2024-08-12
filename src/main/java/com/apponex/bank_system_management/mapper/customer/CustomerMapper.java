@@ -1,12 +1,9 @@
-package com.apponex.bank_system_management.mapper;
+package com.apponex.bank_system_management.mapper.customer;
 
-import com.apponex.bank_system_management.core.security.dto.UserResponseDto;
 import com.apponex.bank_system_management.core.security.mapper.UserMapper;
 import com.apponex.bank_system_management.core.security.model.User;
-import com.apponex.bank_system_management.dto.customer.AddressResponse;
 import com.apponex.bank_system_management.dto.customer.CustomerRequest;
 import com.apponex.bank_system_management.dto.customer.CustomerResponse;
-import com.apponex.bank_system_management.entity.customer.Address;
 import com.apponex.bank_system_management.entity.customer.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Embeddable
 public class Card {
     @Column(unique = true, nullable = false)
@@ -24,7 +25,5 @@ public class Card {
     @Column(nullable = false)
     private String cvv;
 
-    private String cardStatus;
-
-
+    private CardStatus cardStatus;
 }

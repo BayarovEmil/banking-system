@@ -1,4 +1,4 @@
-package com.apponex.bank_system_management.mapper;
+package com.apponex.bank_system_management.mapper.customer;
 
 import com.apponex.bank_system_management.dto.customer.AddressRequest;
 import com.apponex.bank_system_management.dto.customer.AddressResponse;

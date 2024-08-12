@@ -19,6 +19,7 @@ import java.util.List;
 @Table(name = "account")
 public class Account extends BaseEntity {
     private BigDecimal balance;
+    private boolean isActive;
 
     @Embedded
     private Card card;
