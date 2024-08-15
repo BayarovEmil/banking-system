@@ -1,0 +1,38 @@
+[33maca2a22[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: checkout: moving from master to master
+[33maca2a22[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{1}: checkout: moving from master to master
+[33maca2a22[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{2}: commit (amend): Transaction operations: sending money, communal payments adn others
+[33m5afe6d5[m HEAD@{3}: checkout: moving from master to master
+[33m5afe6d5[m HEAD@{4}: reset: moving to 5afe6d5
+[33me2941c9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: reset: moving to e2941c9
+[33m5afe6d5[m HEAD@{6}: reset: moving to 5afe6d5
+[33m5afe6d5[m HEAD@{7}: reset: moving to 5afe6d578a29345fad9c698d85a93d32dce20e75
+[33m5afe6d5[m HEAD@{8}: reset: moving to 5afe6d5
+[33m6f7ff5a[m HEAD@{9}: reset: moving to 6f7ff5a
+[33mdfc42ef[m HEAD@{10}: reset: moving to dfc42ef
+[33mad8c027[m HEAD@{11}: reset: moving to ad8c027
+[33mad8c027[m HEAD@{12}: rebase (abort): returning to refs/heads/master
+[33mad8c027[m HEAD@{13}: rebase (abort): returning to refs/heads/master
+[33mad8c027[m HEAD@{14}: rebase (abort): returning to refs/heads/master
+[33mad8c027[m HEAD@{15}: rebase (abort): returning to refs/heads/master
+[33mad8c027[m HEAD@{16}: checkout: moving from main to master
+[33me2941c9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{17}: checkout: moving from master to main
+[33mad8c027[m HEAD@{18}: commit: Save changes before rebase
+[33mdfc42ef[m HEAD@{19}: commit (amend): Transaction Controller
+[33m756a83e[m HEAD@{20}: checkout: moving from main to master
+[33me2941c9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{21}: checkout: moving from master to main
+[33m756a83e[m HEAD@{22}: commit: Transaction Controller
+[33m6f7ff5a[m HEAD@{23}: checkout: moving from master to master
+[33m6f7ff5a[m HEAD@{24}: commit: Transaction operations
+[33m5afe6d5[m HEAD@{25}: checkout: moving from master to master
+[33m5afe6d5[m HEAD@{26}: commit: Transaction operations: sending money, communal payments adn others
+[33me2941c9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{27}: merge main: Fast-forward
+[33mda9dd21[m HEAD@{28}: checkout: moving from main to master
+[33me2941c9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{29}: commit: Account management features
+[33m8759642[m HEAD@{30}: checkout: moving from main to main
+[33m8759642[m HEAD@{31}: commit: Account management features
+[33mda9dd21[m HEAD@{32}: checkout: moving from master to main
+[33mda9dd21[m HEAD@{33}: checkout: moving from main to master
+[33mda9dd21[m HEAD@{34}: commit: Customer management features
+[33m38bcf0b[m HEAD@{35}: Branch: renamed refs/heads/main to refs/heads/main
+[33m38bcf0b[m HEAD@{37}: Branch: renamed refs/heads/master to refs/heads/main
+[33m38bcf0b[m HEAD@{39}: commit (initial): Security part of application

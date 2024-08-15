@@ -41,7 +41,7 @@ public class SecurityConfig {
                                         .requestMatchers(HttpMethod.PUT,"/admin/**").hasAuthority(Permissions.ADMIN_UPDATE.name())
                                         .requestMatchers(HttpMethod.DELETE,"/admin/**").hasAuthority(Permissions.ADMIN_DELETE.name())
 
-                                        .requestMatchers( "/customer/**").hasRole(Role.CUSTOMER.name())
+                                        .requestMatchers( "/customer/**","/account/**").hasRole(Role.CUSTOMER.name())
                                         .requestMatchers(HttpMethod.GET,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_READ.name())
                                         .requestMatchers(HttpMethod.POST,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_CREATE.name())
                                         .requestMatchers(HttpMethod.PUT,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_UPDATE.name())
@@ -70,6 +70,7 @@ public class SecurityConfig {
             "/user/**",
             "/auth/**",
             "/customer/create/**",
+            "/transaction/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
