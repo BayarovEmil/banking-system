@@ -1,8 +1,9 @@
 package com.apponex.bank_system_management.entity.account;
 
 import com.apponex.bank_system_management.core.common.BaseEntity;
+import com.apponex.bank_system_management.core.security.model.Sms;
 import com.apponex.bank_system_management.entity.customer.Customer;
-import com.apponex.bank_system_management.entity.payment.Transaction;
+import com.apponex.bank_system_management.entity.payment.TransactionHistory;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -29,5 +30,8 @@ public class Account extends BaseEntity {
     private Customer customer;
 
     @OneToMany(mappedBy = "account")
-    private List<Transaction> transactions;
+    private List<TransactionHistory> transactions;
+
+    @OneToMany(mappedBy = "account")
+    private List<Sms> sms;
 }
