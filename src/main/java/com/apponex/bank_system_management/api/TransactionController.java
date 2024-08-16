@@ -78,7 +78,14 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.payYourCommunal(connectedUser,accountId,request));
     }
 
-    
+    @PostMapping("/sendCashbackToAccount/{account-id}")
+    public ResponseEntity<TransactionResponse> sendCashbackToAccount(
+            Authentication connectedUser,
+            @PathVariable("account-id") Integer accountId,
+            BigDecimal cashbackAmount
+    ) {
+        return ResponseEntity.ok(transactionService.sendCashbackToAccount(connectedUser, accountId, cashbackAmount));
+    }
 
 
 }

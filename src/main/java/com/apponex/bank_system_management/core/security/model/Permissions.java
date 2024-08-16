@@ -19,7 +19,11 @@ public enum Permissions  {
     CUSTOMER_READ("CUSTOMER::read"),
     CUSTOMER_UPDATE("CUSTOMER::update"),
     CUSTOMER_CREATE("CUSTOMER::create"),
-    CUSTOMER_DELETE("CUSTOMER::delete")
+    CUSTOMER_DELETE("CUSTOMER::delete"),
+    OFFICER_READ("OFFICER::read"),
+    OFFICER_UPDATE("OFFICER::update"),
+    OFFICER_CREATE("OFFICER::create"),
+    OFFICER_DELETE("OFFICER::delete")
     ;
 
     @Getter

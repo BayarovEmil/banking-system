@@ -25,13 +25,6 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllUsersInformation(page, size));
     }
 
-    @PatchMapping("/assignRoleToUser/{user-id}")
-    public ResponseEntity<UserResponseDto> assignRoleToUser(
-            @PathVariable("user-id") Integer id
-    ) {
-        return ResponseEntity.ok(adminService.assignRoleToUser(id));
-    }
-
     @GetMapping("/getUserInformation/{user-id}")
     public ResponseEntity<UserResponseDto> getUserInformation(
             @PathVariable("user-id") Integer id
@@ -44,5 +37,26 @@ public class AdminController {
             @PathVariable("user-id") Integer id
     ) {
         adminService.deleteAccount(id);
+    }
+
+    @PatchMapping("/setAdmin/{user-id}")
+    public ResponseEntity<UserResponseDto> setAdmin(
+            @PathVariable("user-id") Integer id
+    ) {
+        return ResponseEntity.ok(adminService.setAdmin(id));
+    }
+
+    @PatchMapping("/setManager/{user-id}")
+    public ResponseEntity<UserResponseDto> setManager(
+            @PathVariable("user-id") Integer id
+    ) {
+        return ResponseEntity.ok(adminService.setManager(id));
+    }
+
+    @PatchMapping("/setOfficer/{user-id}")
+    public ResponseEntity<UserResponseDto> setOfficer(
+            @PathVariable("user-id") Integer id
+    ) {
+        return ResponseEntity.ok(adminService.setOfficer(id));
     }
 }

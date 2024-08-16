@@ -35,17 +35,19 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req->
                                 req.requestMatchers(permitSwagger).permitAll()
+                                   .requestMatchers(permitUser).hasRole(Role.USER.name())
+
                                         .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
                                         .requestMatchers(HttpMethod.GET,"/admin/**").hasAuthority(Permissions.ADMIN_READ.name())
                                         .requestMatchers(HttpMethod.POST,"/admin/**").hasAuthority(Permissions.ADMIN_CREATE.name())
                                         .requestMatchers(HttpMethod.PUT,"/admin/**").hasAuthority(Permissions.ADMIN_UPDATE.name())
                                         .requestMatchers(HttpMethod.DELETE,"/admin/**").hasAuthority(Permissions.ADMIN_DELETE.name())
 
-                                        .requestMatchers( "/customer/**","/account/**").hasRole(Role.CUSTOMER.name())
-                                        .requestMatchers(HttpMethod.GET,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_READ.name())
-                                        .requestMatchers(HttpMethod.POST,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_CREATE.name())
-                                        .requestMatchers(HttpMethod.PUT,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_UPDATE.name())
-                                        .requestMatchers(HttpMethod.DELETE,"/customer/**").hasAnyAuthority(Permissions.CUSTOMER_DELETE.name())
+                                        .requestMatchers( "/customer/**","/account/**","/transaction/**").hasRole(Role.CUSTOMER.name())
+                                        .requestMatchers(HttpMethod.GET,"/customer/**","/account/**","/transaction/**").hasAnyAuthority(Permissions.CUSTOMER_READ.name())
+                                        .requestMatchers(HttpMethod.POST,"/customer/**","/account/**","/transaction/**").hasAnyAuthority(Permissions.CUSTOMER_CREATE.name())
+                                        .requestMatchers(HttpMethod.PUT,"/customer/**","/account/**","/transaction/**").hasAnyAuthority(Permissions.CUSTOMER_UPDATE.name())
+                                        .requestMatchers(HttpMethod.DELETE,"/customer/**","/account/**","/transaction/**").hasAnyAuthority(Permissions.CUSTOMER_DELETE.name())
 
                                         .requestMatchers("/manager/**").hasAnyRole(Role.ADMIN.name(), Role.MANAGER.name())
                                         .requestMatchers(HttpMethod.GET,"/manager/**").hasAnyAuthority(Permissions.ADMIN_READ.name(), Permissions.MANAGER_READ.name())
@@ -67,10 +69,6 @@ public class SecurityConfig {
     }
 
     public static String[] permitSwagger = {
-            "/user/**",
-            "/auth/**",
-            "/customer/create/**",
-            "/transaction/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -82,4 +80,10 @@ public class SecurityConfig {
             "/webjars/**",
             "/swagger-ui.html"
     };
+
+    public static String[] permitUser = {
+            "/user/**",
+            "/manager/readCategory/**"
+    };
+
 }

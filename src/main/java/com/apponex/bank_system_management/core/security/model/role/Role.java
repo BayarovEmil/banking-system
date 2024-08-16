@@ -21,6 +21,14 @@ public enum Role {
                     Permissions.CUSTOMER_DELETE
             )
     ),
+    OFFICER(
+            Set.of(
+                    Permissions.OFFICER_CREATE,
+                    Permissions.OFFICER_READ,
+                    Permissions.OFFICER_UPDATE,
+                    Permissions.OFFICER_DELETE
+            )
+    ),
     MANAGER(
             Set.of(
                     Permissions.MANAGER_CREATE,

@@ -5,9 +5,11 @@ import com.apponex.bank_system_management.core.security.dto.SuccessResponse;
 import com.apponex.bank_system_management.core.security.model.User;
 import com.apponex.bank_system_management.core.util.EmailSenderUtil;
 import com.apponex.bank_system_management.dataAccess.AccountRepository;
+import com.apponex.bank_system_management.dataAccess.CustomerRepository;
 import com.apponex.bank_system_management.dataAccess.TransactionRepository;
 import com.apponex.bank_system_management.dto.transaction.*;
 import com.apponex.bank_system_management.entity.account.Account;
+import com.apponex.bank_system_management.entity.customer.Customer;
 import com.apponex.bank_system_management.entity.payment.TransactionHistory;
 import com.apponex.bank_system_management.entity.payment.TransactionStatus;
 import com.apponex.bank_system_management.entity.payment.TransactionType;
@@ -35,8 +37,10 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
     private final AccountMapper accountMapper;
+    private final CustomerRepository customerRepository;
 
     private final EmailSenderUtil emailSenderUtil;
+    private final CashbackService cashbackService;
 
     public TransactionResponse sendMoneyWithCardNumber(TransactionRequest request) {
         Account senderAccount = accountRepository.findById(request.accountId())
@@ -212,6 +216,8 @@ public class TransactionService {
         account.setBalance(account.getBalance().subtract(request.amount()));
         accountRepository.save(account);
 
+        var cash = cashbackService.calculateCashback(request.amount(), request.category());
+
         TransactionHistory transactionHistory = TransactionHistory.builder()
                 .amount(request.amount())
                 .success(true)
@@ -221,7 +227,27 @@ public class TransactionService {
                 .transactionStatus(TransactionStatus.SUCCESS)
                 .transactionType(TransactionType.COMMUNAL_PAYMENT)
                 .amountDeletedCardNumber(account.getCard().getCardNumber())
+                .cashback(cash)
                 .build();
         return transactionMapper.toTransactionResponse(transactionHistory);
+    }
+
+
+    public TransactionResponse sendCashbackToAccount(Authentication connectedUser, Integer accountId, BigDecimal cashbackAmount) {
+        User user = (User) connectedUser.getPrincipal();
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(()->new IllegalStateException("Account not found"));
+        if (!Objects.equals(account.getCustomer().getId(), user.getCustomer().getId())) {
+            throw new IllegalArgumentException("User does not have access to this account");
+        }
+        account.setBalance(account.getBalance().add(cashbackAmount));
+        accountRepository.save(account);
+        return TransactionResponse.builder()
+                .amount(cashbackAmount)
+                .commission(BigDecimal.ZERO)
+                .description("Communal payment")
+                .transactionStatus(TransactionStatus.SUCCESS)
+                .transactionType(TransactionType.TRANSFER)
+                .build();
     }
 }

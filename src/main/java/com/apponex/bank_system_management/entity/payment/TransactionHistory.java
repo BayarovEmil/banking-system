@@ -2,10 +2,8 @@ package com.apponex.bank_system_management.entity.payment;
 
 import com.apponex.bank_system_management.core.common.BaseEntity;
 import com.apponex.bank_system_management.entity.account.Account;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.apponex.bank_system_management.entity.contribution.Cashback;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +32,10 @@ public class TransactionHistory extends BaseEntity {
     private String amountDeletedCardNumber;
     private String amountReceiverCardNumber;
     private String receiverUsername;
+
+    @OneToOne
+    @JoinColumn(name = "transaction_history_id")
+    private Cashback cashback;
 
     @ManyToOne
     @JoinColumn(name = "account_id")

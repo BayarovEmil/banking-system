@@ -40,13 +40,6 @@ public class AdminService {
         );
     }
 
-    public UserResponseDto assignRoleToUser(Integer id) {
-        var user = userRepository.findById(id)
-                .orElseThrow(()->new UsernameNotFoundException("User not found by this id"));
-        user.setRole(Role.ADMIN);
-        return userMapper.toUserResponse(userRepository.save(user));
-    }
-
     public UserResponseDto getUserInformation(Integer id) {
         var user = userRepository.findById(id)
                .orElseThrow(()->new UsernameNotFoundException("User not found by id"));
@@ -59,5 +52,24 @@ public class AdminService {
         userRepository.deleteById(user.getId());
     }
 
+    public UserResponseDto setAdmin(Integer id) {
+        var user = userRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("User not found by this id"));
+        user.setRole(Role.ADMIN);
+        return userMapper.toUserResponse(userRepository.save(user));
+    }
 
+    public UserResponseDto setManager(Integer id) {
+        var user = userRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("User not found by this id"));
+        user.setRole(Role.MANAGER);
+        return userMapper.toUserResponse(userRepository.save(user));
+    }
+
+    public UserResponseDto setOfficer(Integer id) {
+        var user = userRepository.findById(id)
+                .orElseThrow(()->new UsernameNotFoundException("User not found by this id"));
+        user.setRole(Role.OFFICER);
+        return userMapper.toUserResponse(userRepository.save(user));
+    }
 }
